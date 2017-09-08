@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.oschina.net/dbspace/marketing.git
+          search-paths: config-repo/{application}
+          username: dengbin19910916@163.com
+          password: 19910916
+server:
+  port: 8888
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:1111/eureka/,http://localhost:1112/eureka/
