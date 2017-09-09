@@ -1,18 +1,17 @@
 package com.topscore.marketing.promotion.site.management.web;
 
+import com.topscore.marketing.api.promotion.Activity;
+import com.topscore.marketing.api.promotion.ActivityService;
+import com.topscore.marketing.api.promotion.Shop;
 import com.topscore.marketing.promotion.site.management.data.ActivityRepository;
 import com.topscore.marketing.promotion.site.management.data.ShopRepository;
-import com.topscore.marketing.promotion.site.management.model.Activity;
-import com.topscore.marketing.promotion.site.management.model.Shop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/mgmt")
-public class ActivityController {
+public class ActivityController implements ActivityService {
 
     private final ActivityRepository activityRepository;
 
@@ -24,13 +23,18 @@ public class ActivityController {
         this.shopRepository = shopRepository;
     }
 
-    @GetMapping("/activity/{number}")
+    @Override
     public Activity getActivity(@PathVariable String number) {
-        return activityRepository.findByNumber(number);
+        return activityRepository.findByNumber(number).toDto();
     }
 
-    @GetMapping("/shop/{number}")
+    @Override
     public Shop getShop(@PathVariable String number) {
-        return shopRepository.findByNumber(number);
+        return shopRepository.findByNumber(number).toDto();
+    }
+
+    @GetMapping("/name")
+    public String getName() {
+        return "dengb";
     }
 }
