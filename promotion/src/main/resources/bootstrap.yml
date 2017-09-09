@@ -1,8 +1,8 @@
 spring:
   application:
-    name: ui
+    name: promotion
 server:
-  port: 8088
+  port: 7001
 eureka:
   client:
     service-url:
