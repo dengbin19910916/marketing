@@ -1,30 +1,22 @@
-package com.topscore.marketing.api.promotion;
+package com.topscore.marketing.promotion.site.management.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * 赠品。
- * @author dengb
- */
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Gift {
+@Entity
+public class Shop {
 
-    /**
-     * 主键
-     */
+    @Id
     private String id;
 
-    /**
-     * 赠品名称
-     */
     private String name;
 
-    /**
-     * 赠品编号
-     */
     private String number;
 }
